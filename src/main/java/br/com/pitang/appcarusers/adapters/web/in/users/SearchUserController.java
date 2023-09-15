@@ -34,8 +34,8 @@ public class SearchUserController {
 	}
 	
 	@GetMapping(path=USERS_BY_ID_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public List<UserDto> search(@PathVariable(value = USER_ID) Long id) {
-		return INSTANCE.toUsersDto(useCase.searchAll());
+	public UserDto search(@PathVariable(value = USER_ID) Long id) {
+		return INSTANCE.toUserDto(useCase.searchById(id));
 	}
 	
 }

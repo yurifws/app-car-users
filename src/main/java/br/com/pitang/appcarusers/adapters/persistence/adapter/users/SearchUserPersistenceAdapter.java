@@ -24,7 +24,7 @@ public class SearchUserPersistenceAdapter implements SearchUserPort {
 
 	@Override
 	public User searchById(Long id) {
-		return INSTANCE.toUser(service.findById(id));
+		return INSTANCE.toUser(service.findById(id).orElse(null));
 	}
 
 }

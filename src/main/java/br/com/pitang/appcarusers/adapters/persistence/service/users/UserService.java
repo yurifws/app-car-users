@@ -1,13 +1,13 @@
 package br.com.pitang.appcarusers.adapters.persistence.service.users;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.pitang.appcarusers.adapters.persistence.entity.UserEntity;
 import br.com.pitang.appcarusers.adapters.persistence.repository.UserRepository;
-import br.com.pitang.appcarusers.common.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -28,8 +28,8 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public UserEntity findById(Long id) throws UserNotFoundException {
-		return repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+	public Optional<UserEntity> findById(Long id) {
+		return repository.findById(id);
 	}
 
 	@Transactional
