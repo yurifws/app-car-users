@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserDto;
 import br.com.pitang.appcarusers.application.service.SearchUserService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @RestController
