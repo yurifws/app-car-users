@@ -8,4 +8,6 @@ import br.com.pitang.appcarusers.adapters.persistence.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
 
+	boolean existsByEmail(String email);
+	boolean existsByLogin(String login);
 }

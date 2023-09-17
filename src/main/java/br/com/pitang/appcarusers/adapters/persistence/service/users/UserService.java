@@ -38,4 +38,14 @@ public class UserService implements IUserService {
 		repository.deleteById(id);
 	}
 
+	@Override
+	public boolean existsByEmail(String email) {
+		return repository.existsByEmail(email);
+	}
+
+	@Override
+	public boolean existsByLogin(String login) {
+		return repository.existsByLogin(login);
+	}
+
 }

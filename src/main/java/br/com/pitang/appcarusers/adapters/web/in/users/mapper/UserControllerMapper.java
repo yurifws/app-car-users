@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserDto;
 import br.com.pitang.appcarusers.application.domain.users.User;
 
-@Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
+@Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
 public interface UserControllerMapper {
 
 	UserControllerMapper INSTANCE = Mappers.getMapper(UserControllerMapper.class);

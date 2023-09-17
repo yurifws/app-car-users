@@ -8,5 +8,7 @@ public interface SearchUserPort {
 	
 	List<User> searchAll();
 	User searchById(Long id);
+	boolean existsByEmail(String email);
+	boolean existsByLogin(String login);
 
 }

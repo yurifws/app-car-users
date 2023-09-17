@@ -8,4 +8,7 @@ public interface SearchUserUseCase {
 
 	List<User> searchAll();
 	User searchById(Long id);
+
+	boolean existsByEmail(String email);
+	boolean existsByLogin(String login);
 }

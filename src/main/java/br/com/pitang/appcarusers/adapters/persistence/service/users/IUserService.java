@@ -11,5 +11,7 @@ public interface IUserService {
 	List<UserEntity> findAll();
 	Optional<UserEntity> findById(Long id);  
 	void removeById(Long id);
+	boolean existsByEmail(String email);
+	boolean existsByLogin(String login);
 }
  
