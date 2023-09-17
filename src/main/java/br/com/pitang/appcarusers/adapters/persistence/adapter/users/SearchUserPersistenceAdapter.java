@@ -28,7 +28,7 @@ public class SearchUserPersistenceAdapter implements SearchUserPort {
 	public User searchById(Long id) {
 		Optional<UserEntity> optionalUserEntity = service.findById(id);
 		if(optionalUserEntity.isPresent()) {
-			INSTANCE.toUser(optionalUserEntity.get());
+			return INSTANCE.toUser(optionalUserEntity.get());
 		}
 		return null;
 	}

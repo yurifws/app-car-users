@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 import br.com.pitang.appcarusers.adapters.persistence.entity.UserEntity;
 import br.com.pitang.appcarusers.application.domain.users.User;
 
-@Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
+@Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
 public interface UserPersistenceMapper {
 	
 	UserPersistenceMapper INSTANCE = Mappers.getMapper(UserPersistenceMapper.class);
