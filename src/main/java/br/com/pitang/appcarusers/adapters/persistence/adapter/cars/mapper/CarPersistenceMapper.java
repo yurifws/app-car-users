@@ -1,4 +1,4 @@
-package br.com.pitang.appcarcars.adapters.persistence.adapter.cars.mapper;
+package br.com.pitang.appcarusers.adapters.persistence.adapter.cars.mapper;
 
 import java.util.List;
 

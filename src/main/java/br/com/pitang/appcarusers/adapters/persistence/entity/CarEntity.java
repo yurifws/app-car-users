@@ -44,7 +44,7 @@ public class CarEntity {
 	private String color;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "user_id")
 	private UserEntity user;
 
 }

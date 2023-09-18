@@ -32,7 +32,4 @@ public class RegisterUserController {
 	public UserDto register(@Valid @RequestBody UserDto userDto) {
 		return INSTANCE.toUserDto(useCase.register(INSTANCE.toUser(userDto)));
 	}
-
-
-
 }
