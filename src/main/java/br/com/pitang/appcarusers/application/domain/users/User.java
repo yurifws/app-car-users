@@ -1,6 +1,6 @@
 package br.com.pitang.appcarusers.application.domain.users;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.com.pitang.appcarusers.application.domain.cars.Car;
@@ -21,7 +21,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private Date birthday;
+	private LocalDate birthday;
 	private String login;
 	private String password;
 	private String phone;

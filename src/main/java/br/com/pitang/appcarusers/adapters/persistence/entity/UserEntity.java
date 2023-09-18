@@ -1,23 +1,38 @@
 package br.com.pitang.appcarusers.adapters.persistence.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
+@EqualsAndHashCode
 @Entity
 @Table(name = "user")
 public class UserEntity {
+	
+	@EqualsAndHashCode.Include
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	@Column(nullable = false)
 	private String firstName;
@@ -29,7 +44,7 @@ public class UserEntity {
 	private String email;
 
 	@Column(nullable = false)
-	private Date birthday;
+	private LocalDate birthday;
 
 	@Column(nullable = false)
 	private String login;
@@ -40,7 +55,7 @@ public class UserEntity {
 	@Column(nullable = false)
 	private String phone;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user")
 	private List<CarEntity> cars = new ArrayList<>(0);
 
 }
