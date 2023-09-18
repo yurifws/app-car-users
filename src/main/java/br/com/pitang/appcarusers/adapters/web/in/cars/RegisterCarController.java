@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarRequestDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarResponseDto;
 import br.com.pitang.appcarusers.application.ports.in.RegisterCarUseCase;
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +30,7 @@ public class RegisterCarController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping(path=CARS_ROUTE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public CarDto register(@Valid @RequestBody CarDto carDto) {
-		return INSTANCE.toCarDto(useCase.register(INSTANCE.toCar(carDto)));
+	public CarResponseDto register(@Valid @RequestBody CarRequestDto carDto) {
+		return INSTANCE.toCarReponseDto(useCase.register(INSTANCE.toCar(carDto)));
 	}
 }

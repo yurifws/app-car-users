@@ -8,7 +8,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarRequestDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarResponseDto;
 import br.com.pitang.appcarusers.application.domain.cars.Car;
 import br.com.pitang.appcarusers.testdata.CarDtoTestData;
 import br.com.pitang.appcarusers.testdata.CarTestData;
@@ -20,14 +21,14 @@ class CarControllerMapperTest {
 	@Test
 	void testToCar() {
 		
-		CarDto carDto = CarDtoTestData.getCarDto();
-		Car car = mapper.toCar(carDto);
+		CarRequestDto carRequestDto = CarDtoTestData.getCarDto();
+		Car car = mapper.toCar(carRequestDto);
 		
 		assertNotNull(car);
-		assertEquals(carDto.getYear(), car.getYear());
-		assertEquals(carDto.getLicensePlate(), car.getLicensePlate());
-		assertEquals(carDto.getModel(), car.getModel());
-		assertEquals(carDto.getColor(), car.getColor());
+		assertEquals(carRequestDto.getYear(), car.getYear());
+		assertEquals(carRequestDto.getLicensePlate(), car.getLicensePlate());
+		assertEquals(carRequestDto.getModel(), car.getModel());
+		assertEquals(carRequestDto.getColor(), car.getColor());
 	}
 	
 
@@ -35,28 +36,28 @@ class CarControllerMapperTest {
 	void testToCarDto() {
 		
 		Car car = CarTestData.getCar();
-		CarDto carDto = mapper.toCarDto(car);
+		CarResponseDto carResponseDto = mapper.toCarReponseDto(car);
 		
-		assertNotNull(carDto);
-		assertEquals(carDto.getYear(), car.getYear());
-		assertEquals(carDto.getLicensePlate(), car.getLicensePlate());
-		assertEquals(carDto.getModel(), car.getModel());
-		assertEquals(carDto.getColor(), car.getColor());
+		assertNotNull(carResponseDto);
+		assertEquals(carResponseDto.getYear(), car.getYear());
+		assertEquals(carResponseDto.getLicensePlate(), car.getLicensePlate());
+		assertEquals(carResponseDto.getModel(), car.getModel());
+		assertEquals(carResponseDto.getColor(), car.getColor());
 	}
 	
 	@Test
 	void testToCarsDto() {
 		List<Car> cars = new ArrayList<>();
 		cars.add(CarTestData.getCar());
-		List<CarDto> carsDto = mapper.toCarsDto(cars);
+		List<CarResponseDto> carsResponseDto = mapper.toCarsResponseDto(cars);
 		
 
 		Car car = cars.get(0);
-		CarDto carDto = carsDto.get(0);
-		assertEquals(carDto.getYear(), car.getYear());
-		assertEquals(carDto.getLicensePlate(), car.getLicensePlate());
-		assertEquals(carDto.getModel(), car.getModel());
-		assertEquals(carDto.getColor(), car.getColor());
+		CarResponseDto carResponseDto = carsResponseDto.get(0);
+		assertEquals(carResponseDto.getYear(), car.getYear());
+		assertEquals(carResponseDto.getLicensePlate(), car.getLicensePlate());
+		assertEquals(carResponseDto.getModel(), car.getModel());
+		assertEquals(carResponseDto.getColor(), car.getColor());
 		
 	}
 

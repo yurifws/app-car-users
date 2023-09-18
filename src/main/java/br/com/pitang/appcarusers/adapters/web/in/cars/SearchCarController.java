@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarResponseDto;
 import br.com.pitang.appcarusers.application.ports.in.SearchCarUseCase;
 import lombok.RequiredArgsConstructor;
 
@@ -31,13 +31,13 @@ public class SearchCarController {
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(path=CARS_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public List<CarDto> search() {
-		return INSTANCE.toCarsDto(useCase.searchAll());
+	public List<CarResponseDto> search() {
+		return INSTANCE.toCarsResponseDto(useCase.searchAll());
 	}
-
+	
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(path=CARS_BY_ID_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public CarDto search(@PathVariable(value = CAR_ID) Long id) {
-		return INSTANCE.toCarDto(useCase.searchById(id));
+	public CarResponseDto search(@PathVariable(value = CAR_ID) Long id) {
+		return INSTANCE.toCarReponseDto(useCase.searchById(id));
 	}
 }

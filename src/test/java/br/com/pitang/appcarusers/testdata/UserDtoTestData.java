@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarDto;
-import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarRequestDto;
+import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserRequestDto;
 
 public class UserDtoTestData {
 	
 
-	public static Optional<UserDto> getOptionalUserDto() {
+	public static Optional<UserRequestDto> getOptionalUserDto() {
 		return Optional.of(getUserDto());
 	}
 
-	public static UserDto getUserDto() {
-		List<CarDto> cars = new ArrayList<>();
+	public static UserRequestDto getUserDto() {
+		List<CarRequestDto> cars = new ArrayList<>();
 		cars.add(CarDtoTestData.getCarDto());
 		
-		return UserDto.builder()
+		return UserRequestDto.builder()
 				.firstName("Vilma")
 				.lastName("Souza")
 				.email("vilma.souza@teste.com")
