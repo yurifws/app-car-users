@@ -4,9 +4,8 @@ import org.springframework.stereotype.Component;
 
 import br.com.pitang.appcarusers.application.domain.users.User;
 import br.com.pitang.appcarusers.application.ports.in.RegisterUserUseCase;
+import br.com.pitang.appcarusers.application.ports.in.ValidateUserUseCase;
 import br.com.pitang.appcarusers.application.ports.out.RegisterUserPort;
-import br.com.pitang.appcarusers.common.exception.EmailAlreadyExistsException;
-import br.com.pitang.appcarusers.common.exception.LoginAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -14,17 +13,12 @@ import lombok.RequiredArgsConstructor;
 public class RegisterUserService implements RegisterUserUseCase {
 
 	private final RegisterUserPort port;
-	private final SearchUserService searchUserService;
+	private final ValidateUserUseCase validateUserUseCase;
 	
 	@Override
 	public User register(User user) {
-		if(searchUserService.existsByEmail(user.getEmail())) {
-			throw new EmailAlreadyExistsException("Email already exists");
-		}
-		if(searchUserService.existsByLogin(user.getLogin())) {
-			throw new LoginAlreadyExistsException("Login already exists");
-		}
-		
+		validateUserUseCase.existsByEmail(user.getEmail());
+		validateUserUseCase.existsByLogin(user.getLogin());
 		return port.register(user);
 	}
 

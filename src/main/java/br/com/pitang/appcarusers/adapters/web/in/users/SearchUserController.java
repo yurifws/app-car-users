@@ -4,6 +4,7 @@ import static br.com.pitang.appcarusers.adapters.web.in.users.mapper.UserControl
 import static br.com.pitang.appcarusers.adapters.web.routes.Routes.BASE_PATH;
 import static br.com.pitang.appcarusers.adapters.web.routes.Routes.USERS_BY_ID_ROUTE;
 import static br.com.pitang.appcarusers.adapters.web.routes.Routes.USERS_ROUTE;
+import static br.com.pitang.appcarusers.adapters.web.routes.Routes.USER_ID;
 
 import java.util.List;
 
@@ -26,8 +27,6 @@ import lombok.RequiredArgsConstructor;
 @Validated
 public class SearchUserController {
 
-	private static final String USER_ID = "user_id";
-	
 	private final SearchUserService useCase;
 
 	@ResponseStatus(HttpStatus.OK)

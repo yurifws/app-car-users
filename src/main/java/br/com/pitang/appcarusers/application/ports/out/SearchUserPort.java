@@ -9,7 +9,5 @@ public interface SearchUserPort {
 	
 	List<User> searchAll();
 	Optional<User> searchById(Long id);
-	boolean existsByEmail(String email);
-	boolean existsByLogin(String login);
 
 }

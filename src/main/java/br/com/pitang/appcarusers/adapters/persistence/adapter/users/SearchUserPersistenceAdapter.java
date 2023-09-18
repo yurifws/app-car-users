@@ -32,15 +32,5 @@ public class SearchUserPersistenceAdapter implements SearchUserPort {
 		}
 		return Optional.empty();
 	}
-
-	@Override
-	public boolean existsByEmail(String email) {
-		return service.existsByEmail(email);
-	}
-
-	@Override
-	public boolean existsByLogin(String login) {
-		return service.existsByLogin(login);
-	}
-
+	
 }

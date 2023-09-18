@@ -30,14 +30,4 @@ public class SearchUserService implements SearchUserUseCase {
 		return null;
 	}
 
-	@Override
-	public boolean existsByEmail(String email) {
-		return port.existsByEmail(email);
-	}
-
-	@Override
-	public boolean existsByLogin(String login) {
-		return port.existsByLogin(login);
-	}
-
 }

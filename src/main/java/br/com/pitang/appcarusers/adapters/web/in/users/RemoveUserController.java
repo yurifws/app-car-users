@@ -2,6 +2,7 @@ package br.com.pitang.appcarusers.adapters.web.in.users;
 
 import static br.com.pitang.appcarusers.adapters.web.routes.Routes.BASE_PATH;
 import static br.com.pitang.appcarusers.adapters.web.routes.Routes.USERS_BY_ID_ROUTE;
+import static br.com.pitang.appcarusers.adapters.web.routes.Routes.USER_ID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,8 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(BASE_PATH)
 @Validated
 public class RemoveUserController {
-	private static final String USER_ID = "user_id";
-
+	
 	private final RemoveUserUseCase useCase;
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)

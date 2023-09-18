@@ -1,6 +1,7 @@
 package br.com.pitang.appcarusers.application.service;
 
-import org.apache.commons.lang3.ObjectUtils;
+import static org.apache.commons.lang3.ObjectUtils.isNotEmpty;
+
 import org.springframework.stereotype.Component;
 
 import br.com.pitang.appcarusers.application.ports.in.RemoveUserUseCase;
@@ -16,7 +17,7 @@ public class RemoveUserService implements RemoveUserUseCase {
 	
 	@Override
 	public void removeById(Long id) {
-		if(ObjectUtils.isNotEmpty(searchUserService.searchById(id))) {
+		if(isNotEmpty(searchUserService.searchById(id))) {
 			port.removeById(id);
 		}
 	}
