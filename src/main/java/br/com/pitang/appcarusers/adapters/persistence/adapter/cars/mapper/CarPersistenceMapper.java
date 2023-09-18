@@ -1,4 +1,4 @@
-package br.com.pitang.appcarusers.adapters.persistence.adapter.cars.mapper;
+package br.com.pitang.appcarcars.adapters.persistence.adapter.cars.mapper;
 
 import java.util.List;
 
@@ -17,12 +17,12 @@ public interface CarPersistenceMapper {
 
 	CarPersistenceMapper INSTANCE = Mappers.getMapper(CarPersistenceMapper.class);
 
-	CarEntity toCarEntity(Car user);
-	Car toCar(CarEntity userEntity);
+	CarEntity toCarEntity(Car car);
+	Car toCar(CarEntity carEntity);
 
-	List<Car> toCars(List<CarEntity> userEntities);
+	List<Car> toCars(List<CarEntity> carEntities);
 
 	@Mapping(target = "id", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-	void update(@MappingTarget CarEntity userEntity, Car user);
+	void update(@MappingTarget CarEntity carEntity, Car car);
 	
 }
