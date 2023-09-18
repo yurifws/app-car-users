@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import br.com.pitang.appcarusers.application.ports.in.SearchUserUseCase;
 import br.com.pitang.appcarusers.application.ports.out.RemoveUserPort;
 import br.com.pitang.appcarusers.testdata.UserTestData;
 
@@ -24,29 +25,29 @@ class RemoveUserServiceTest {
 	private RemoveUserPort port;
 	
 	@Mock
-	private SearchUserService searchUserService;
+	private SearchUserUseCase searchUserUseCase;
 
 	@Test
 	void testRemoveById() {
 
 		Long id = 1234l;
-		when(searchUserService.searchById(id)).thenReturn(UserTestData.getUser());
+		when(searchUserUseCase.searchById(id)).thenReturn(UserTestData.getUser());
 		doNothing().when(port).removeById(id);
 		
 		service.removeById(id);
 		
-		verify(searchUserService).searchById(id);
+		verify(searchUserUseCase).searchById(id);
 	}
 	
 	@Test
 	void testRemoveById_butUserNotFound() {
 
 		Long id = 1234l;
-		when(searchUserService.searchById(id)).thenReturn(null);
+		when(searchUserUseCase.searchById(id)).thenReturn(null);
 		
 		service.removeById(id);
 		
-		verify(searchUserService).searchById(id);
+		verify(searchUserUseCase).searchById(id);
 		verifyNoInteractions(port);
 	}
 
