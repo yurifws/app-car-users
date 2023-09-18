@@ -22,7 +22,7 @@ import br.com.pitang.appcarusers.testdata.UserTestData;
 class RegisterUserPersistenceAdapterTest {
 
 	@InjectMocks
-	RegisterUserPersistenceAdapter adapter;
+	private RegisterUserPersistenceAdapter adapter;
 
 	@Mock
 	private IUserService service;

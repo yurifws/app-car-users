@@ -3,11 +3,17 @@ package br.com.pitang.appcarusers.testdata;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import br.com.pitang.appcarusers.application.domain.cars.Car;
 import br.com.pitang.appcarusers.application.domain.users.User;
 
 public class UserTestData {
+	
+
+	public static Optional<User> getOptionalUser() {
+		return Optional.of(getUser());
+	}
 
 	public static User getUser() {
 		List<Car> cars = new ArrayList<>();
