@@ -1,11 +1,11 @@
 package br.com.pitang.appcarusers.adapters.web.in.users.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import br.com.pitang.appcarusers.application.domain.cars.Car;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,9 +23,9 @@ public class UserDto {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private Date birthday;
+	private LocalDate birthday;
 	private String login;
 	private String password;
 	private String phone;
-	private List<Car> cars;
+	private List<CarDto> cars;
 }

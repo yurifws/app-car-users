@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserDto;
-import br.com.pitang.appcarusers.application.service.SearchUserService;
+import br.com.pitang.appcarusers.application.ports.in.SearchUserUseCase;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @Validated
 public class SearchUserController {
 
-	private final SearchUserService useCase;
+	private final SearchUserUseCase useCase;
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(path=USERS_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE )
