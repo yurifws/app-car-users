@@ -17,10 +17,10 @@ public interface UserPersistenceMapper {
 	
 	UserPersistenceMapper INSTANCE = Mappers.getMapper(UserPersistenceMapper.class);
 
-	public UserEntity toUserEntity(User user);
-	public User toUser(UserEntity userEntity);
+	UserEntity toUserEntity(User user);
+	User toUser(UserEntity userEntity);
 
-	public List<User> toUsers(List<UserEntity> userEntities);
+	List<User> toUsers(List<UserEntity> userEntities);
 
 	@Mapping(target = "id", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 	void update(@MappingTarget UserEntity userEntity, User user);

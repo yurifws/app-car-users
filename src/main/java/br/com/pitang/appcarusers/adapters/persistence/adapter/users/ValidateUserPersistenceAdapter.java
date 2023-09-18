@@ -2,7 +2,7 @@ package br.com.pitang.appcarusers.adapters.persistence.adapter.users;
 
 import org.springframework.stereotype.Component;
 
-import br.com.pitang.appcarusers.adapters.persistence.service.users.UserService;
+import br.com.pitang.appcarusers.adapters.persistence.service.users.IUserService;
 import br.com.pitang.appcarusers.application.ports.out.ValidateUserPort;
 import lombok.RequiredArgsConstructor;
 
@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Component
 public class ValidateUserPersistenceAdapter implements ValidateUserPort {
 
-	private final UserService service;
+	private final IUserService service;
 	
 	@Override
 	public boolean existsByEmail(String email) {

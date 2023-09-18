@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Component;
 
 import br.com.pitang.appcarusers.adapters.persistence.entity.UserEntity;
-import br.com.pitang.appcarusers.adapters.persistence.service.users.UserService;
+import br.com.pitang.appcarusers.adapters.persistence.service.users.IUserService;
 import br.com.pitang.appcarusers.application.domain.users.User;
 import br.com.pitang.appcarusers.application.ports.out.SearchUserPort;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Component
 public class SearchUserPersistenceAdapter implements SearchUserPort {
 
-	private final UserService service;
+	private final IUserService service;
 	
 	@Override
 	public List<User> searchAll() {

@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Component;
 
 import br.com.pitang.appcarusers.adapters.persistence.entity.UserEntity;
-import br.com.pitang.appcarusers.adapters.persistence.service.users.UserService;
+import br.com.pitang.appcarusers.adapters.persistence.service.users.IUserService;
 import br.com.pitang.appcarusers.application.domain.users.User;
 import br.com.pitang.appcarusers.application.ports.out.UpdateUserPort;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Component
 public class UpdateUserPersistenceAdapter implements UpdateUserPort {
 
-	private final UserService service;
+	private final IUserService service;
 		
 	@Override
 	public User update(User user, Long id) {

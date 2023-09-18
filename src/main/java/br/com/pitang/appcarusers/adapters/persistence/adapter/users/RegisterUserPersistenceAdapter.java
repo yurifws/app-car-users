@@ -4,7 +4,7 @@ import static br.com.pitang.appcarusers.adapters.persistence.adapter.users.mappe
 
 import org.springframework.stereotype.Component;
 
-import br.com.pitang.appcarusers.adapters.persistence.service.users.UserService;
+import br.com.pitang.appcarusers.adapters.persistence.service.users.IUserService;
 import br.com.pitang.appcarusers.application.domain.users.User;
 import br.com.pitang.appcarusers.application.ports.out.RegisterUserPort;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Component
 public class RegisterUserPersistenceAdapter implements RegisterUserPort {
 	
-	private final UserService service;
+	private final IUserService service;
 
 	@Override
 	public User register(User user) {

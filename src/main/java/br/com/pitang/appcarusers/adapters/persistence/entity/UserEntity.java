@@ -1,10 +1,9 @@
 package br.com.pitang.appcarusers.adapters.persistence.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +12,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
+@EqualsAndHashCode
 @Entity
 @Table(name = "user")
 public class UserEntity {
@@ -37,7 +44,7 @@ public class UserEntity {
 	private String email;
 
 	@Column(nullable = false)
-	private Date birthday;
+	private LocalDate birthday;
 
 	@Column(nullable = false)
 	private String login;
