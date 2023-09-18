@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserRequestDto;
+import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserResponseDto;
 import br.com.pitang.appcarusers.application.ports.in.UpdateUserUseCase;
 import lombok.RequiredArgsConstructor;
 
@@ -31,8 +32,8 @@ public class UpdateUserController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping(path=USERS_BY_ID_ROUTE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public UserRequestDto update(@Valid @RequestBody UserRequestDto userDto,
+	public UserResponseDto update(@Valid @RequestBody UserRequestDto userDto,
 			@PathVariable(value = USER_ID) Long id) {
-		return INSTANCE.toUserDto(useCase.update(INSTANCE.toUser(userDto), id));
+		return INSTANCE.toUserResponseDto(useCase.update(INSTANCE.toUser(userDto), id));
 	}
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserRequestDto;
+import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserResponseDto;
 import br.com.pitang.appcarusers.application.ports.in.RegisterUserUseCase;
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +30,7 @@ public class RegisterUserController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping(path=USERS_ROUTE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public UserRequestDto register(@Valid @RequestBody UserRequestDto userDto) {
-		return INSTANCE.toUserDto(useCase.register(INSTANCE.toUser(userDto)));
+	public UserResponseDto register(@Valid @RequestBody UserRequestDto userDto) {
+		return INSTANCE.toUserResponseDto(useCase.register(INSTANCE.toUser(userDto)));
 	}
 }
