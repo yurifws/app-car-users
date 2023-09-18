@@ -1,6 +1,7 @@
 package br.com.pitang.appcarusers.application.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,11 @@ public class SearchUserService implements SearchUserUseCase {
 
 	@Override
 	public User searchById(Long id) {
-		return port.searchById(id);
+		Optional<User> optionalUser = port.searchById(id);
+		if(optionalUser.isPresent()) {
+			return optionalUser.get();
+		}
+		return null;
 	}
 
 	@Override
