@@ -8,8 +8,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarDto;
-import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarRequestDto;
+import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserRequestDto;
+import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserResponseDto;
 import br.com.pitang.appcarusers.application.domain.cars.Car;
 import br.com.pitang.appcarusers.application.domain.users.User;
 import br.com.pitang.appcarusers.testdata.UserDtoTestData;
@@ -22,7 +23,7 @@ class UserControllerMapperTest {
 	@Test
 	void testToUser() {
 		
-		UserDto userDto = UserDtoTestData.getUserDto();
+		UserRequestDto userDto = UserDtoTestData.getUserDto();
 		User user = mapper.toUser(userDto);
 		
 		assertNotNull(user);
@@ -34,7 +35,7 @@ class UserControllerMapperTest {
 		assertEquals(userDto.getPassword(), user.getPassword());
 		assertEquals(userDto.getPhone(), user.getPhone());
 
-		CarDto carDto = userDto.getCars().get(0);
+		CarRequestDto carDto = userDto.getCars().get(0);
 		Car car = user.getCars().get(0);
 		assertEquals(carDto.getYear(), car.getYear());
 		assertEquals(carDto.getLicensePlate(), car.getLicensePlate());
@@ -47,50 +48,37 @@ class UserControllerMapperTest {
 	void testToUserDto() {
 		
 		User user = UserTestData.getUser();
-		UserDto userDto = mapper.toUserDto(user);
+		UserResponseDto userResponseDto = mapper.toUserResponseDto(user);
 		
-		assertNotNull(userDto);
-		assertEquals(user.getFirstName(), userDto.getFirstName());
-		assertEquals(user.getLastName(), userDto.getLastName());
-		assertEquals(user.getEmail(), userDto.getEmail());
-		assertEquals(user.getBirthday(), userDto.getBirthday());
-		assertEquals(user.getLogin(), userDto.getLogin());
-		assertEquals(user.getPassword(), userDto.getPassword());
-		assertEquals(user.getPhone(), userDto.getPhone());
+		assertNotNull(userResponseDto);
+		assertEquals(user.getFirstName(), userResponseDto.getFirstName());
+		assertEquals(user.getLastName(), userResponseDto.getLastName());
+		assertEquals(user.getEmail(), userResponseDto.getEmail());
+		assertEquals(user.getBirthday(), userResponseDto.getBirthday());
+		assertEquals(user.getLogin(), userResponseDto.getLogin());
+		assertEquals(user.getPassword(), userResponseDto.getPassword());
+		assertEquals(user.getPhone(), userResponseDto.getPhone());
 
-		Car car = user.getCars().get(0);
-		CarDto carDto = userDto.getCars().get(0);
-		assertEquals(carDto.getYear(), car.getYear());
-		assertEquals(carDto.getLicensePlate(), car.getLicensePlate());
-		assertEquals(carDto.getModel(), car.getModel());
-		assertEquals(carDto.getColor(), car.getColor());
 	}
 	
 	@Test
 	void testToUsersDto() {
 		List<User> users = new ArrayList<>();
 		users.add(UserTestData.getUser());
-		List<UserDto> usersDto = mapper.toUsersDto(users);
+		List<UserResponseDto> usersResponseDto = mapper.toUsersResponseDtoDto(users);
 		
 
 		User user = users.get(0);
-		UserDto userDto = usersDto.get(0);
+		UserResponseDto userResponseDto = usersResponseDto.get(0);
 		
-		assertNotNull(userDto);
-		assertEquals(user.getFirstName(), userDto.getFirstName());
-		assertEquals(user.getLastName(), userDto.getLastName());
-		assertEquals(user.getEmail(), userDto.getEmail());
-		assertEquals(user.getBirthday(), userDto.getBirthday());
-		assertEquals(user.getLogin(), userDto.getLogin());
-		assertEquals(user.getPassword(), userDto.getPassword());
-		assertEquals(user.getPhone(), userDto.getPhone());
-
-		Car car = user.getCars().get(0);
-		CarDto carDto = userDto.getCars().get(0);
-		assertEquals(carDto.getYear(), car.getYear());
-		assertEquals(carDto.getLicensePlate(), car.getLicensePlate());
-		assertEquals(carDto.getModel(), car.getModel());
-		assertEquals(carDto.getColor(), car.getColor());
+		assertNotNull(userResponseDto);
+		assertEquals(user.getFirstName(), userResponseDto.getFirstName());
+		assertEquals(user.getLastName(), userResponseDto.getLastName());
+		assertEquals(user.getEmail(), userResponseDto.getEmail());
+		assertEquals(user.getBirthday(), userResponseDto.getBirthday());
+		assertEquals(user.getLogin(), userResponseDto.getLogin());
+		assertEquals(user.getPassword(), userResponseDto.getPassword());
+		assertEquals(user.getPhone(), userResponseDto.getPhone());
 		
 	}
 

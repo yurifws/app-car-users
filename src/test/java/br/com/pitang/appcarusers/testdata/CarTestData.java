@@ -1,8 +1,14 @@
 package br.com.pitang.appcarusers.testdata;
 
+import java.util.Optional;
+
 import br.com.pitang.appcarusers.application.domain.cars.Car;
 
 public class CarTestData {
+
+	public static Optional<Car> getOptionalCar() {
+		return Optional.of(getCar());
+	}
 
 	public static Car getCar() {
 		return Car.builder()

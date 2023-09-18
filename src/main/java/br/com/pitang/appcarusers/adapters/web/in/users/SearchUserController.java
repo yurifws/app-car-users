@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserDto;
+import br.com.pitang.appcarusers.adapters.web.in.users.dto.UserResponseDto;
 import br.com.pitang.appcarusers.application.ports.in.SearchUserUseCase;
 import lombok.RequiredArgsConstructor;
 
@@ -31,14 +31,14 @@ public class SearchUserController {
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(path=USERS_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public List<UserDto> search() {
-		return INSTANCE.toUsersDto(useCase.searchAll());
+	public List<UserResponseDto> search() {
+		return INSTANCE.toUsersResponseDtoDto(useCase.searchAll());
 	}
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(path=USERS_BY_ID_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE )
-	public UserDto search(@PathVariable(value = USER_ID) Long id) {
-		return INSTANCE.toUserDto(useCase.searchById(id));
+	public UserResponseDto search(@PathVariable(value = USER_ID) Long id) {
+		return INSTANCE.toUserResponseDto(useCase.searchById(id));
 	}
 	
 }

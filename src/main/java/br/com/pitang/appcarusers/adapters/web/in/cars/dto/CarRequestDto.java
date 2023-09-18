@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CarDto {
+public class CarRequestDto {
 
 	private Integer year;
 	private String licensePlate;

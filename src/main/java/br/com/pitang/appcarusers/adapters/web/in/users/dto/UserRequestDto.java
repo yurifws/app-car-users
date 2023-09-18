@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarDto;
+import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
+public class UserRequestDto {
 
 	private String firstName;
 	private String lastName;
@@ -27,5 +27,5 @@ public class UserDto {
 	private String login;
 	private String password;
 	private String phone;
-	private List<CarDto> cars;
+	private List<CarRequestDto> cars;
 }

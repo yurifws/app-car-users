@@ -1,8 +1,14 @@
 package br.com.pitang.appcarusers.testdata;
 
+import java.util.Optional;
+
 import br.com.pitang.appcarusers.adapters.persistence.entity.CarEntity;
 
 public class CarEntityTestData {
+	
+	public static Optional<CarEntity> getOptionalCarEntity(){
+		return Optional.of(getCarEntity());
+	}
 
 	public static CarEntity getCarEntity() {
 		return CarEntity.builder()
@@ -16,7 +22,7 @@ public class CarEntityTestData {
 	
 	public static CarEntity getCarEntityUpdate() {
 		return CarEntity.builder()
-				.id(125L)
+				.id(123L)
 				.year(2002)
 				.licensePlate("PDV-2015")
 				.model("audi")
