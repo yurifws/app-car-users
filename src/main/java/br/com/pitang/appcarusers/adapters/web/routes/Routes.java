@@ -15,4 +15,8 @@ public class Routes {
 	public static final String CAR_ID = "car_id";
 
 	public static final String CARS_BY_ID_ROUTE = CARS_ROUTE + "/{"+CAR_ID+"}";
+	
+	public static final String SIGNIN_ROUTE = "/signin";
+
+	public static final String ME_ROUTE = "/me";
 }

@@ -15,15 +15,16 @@ import lombok.RequiredArgsConstructor;
 public class SearchCarService implements SearchCarUseCase {
 
 	private final SearchCarPort port;
+	private final SearchUserService searchUserService;
 	
 	@Override
-	public List<Car> searchAll() {
-		return port.searchAll();
+	public List<Car> searchAllByUserId() {
+		return port.searchAllByUserId(searchUserService.searchByLoggedUser().getId());
 	}
 
 	@Override
 	public Car searchById(Long id) {
-		Optional<Car> optionalCar = port.searchById(id);
+		Optional<Car> optionalCar = port.searchByIdAndUserId(id, searchUserService.searchByLoggedUser().getId());
 		if(optionalCar.isPresent()) {
 			return optionalCar.get();
 		}

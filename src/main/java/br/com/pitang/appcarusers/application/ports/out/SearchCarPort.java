@@ -6,7 +6,7 @@ import java.util.Optional;
 import br.com.pitang.appcarusers.application.domain.cars.Car;
 
 public interface SearchCarPort {
-
-	List<Car> searchAll();
-	Optional<Car> searchById(Long id);
+	
+	List<Car> searchAllByUserId(Long userId);
+	Optional<Car> searchByIdAndUserId(Long id, Long userId);
 }

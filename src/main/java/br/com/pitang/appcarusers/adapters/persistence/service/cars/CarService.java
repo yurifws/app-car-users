@@ -43,4 +43,14 @@ public class CarService implements ICarService {
 		return repository.existsByLicensePlate(licensePlate);
 	}
 
+	@Override
+	public List<CarEntity> findAllByUserId(Long userId) {
+		return repository.findByUserId(userId);
+	}
+
+	@Override
+	public Optional<CarEntity> findByIdAndUserId(Long id, Long userId) {
+		return repository.findByIdAndUserId(id, userId);
+	}
+
 }

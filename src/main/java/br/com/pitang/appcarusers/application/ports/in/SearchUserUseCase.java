@@ -8,4 +8,5 @@ public interface SearchUserUseCase {
 
 	List<User> searchAll();
 	User searchById(Long id);
+	User searchByLoggedUser();
 }

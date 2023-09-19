@@ -9,5 +9,6 @@ public interface SearchUserPort {
 	
 	List<User> searchAll();
 	Optional<User> searchById(Long id);
+	User searchByLogin(String login);
 
 }

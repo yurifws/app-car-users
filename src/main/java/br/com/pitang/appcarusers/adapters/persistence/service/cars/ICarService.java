@@ -12,5 +12,7 @@ public interface ICarService {
 	Optional<CarEntity> findById(Long id);  
 	void removeById(Long id);
 	boolean existsByLicensePlate(String licensePlate);
+	List<CarEntity> findAllByUserId(Long userId);
+	Optional<CarEntity> findByIdAndUserId(Long id, Long userId);
 }
  

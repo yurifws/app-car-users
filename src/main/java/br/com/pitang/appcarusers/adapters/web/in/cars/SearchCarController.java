@@ -32,7 +32,7 @@ public class SearchCarController {
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(path=CARS_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE )
 	public List<CarResponseDto> search() {
-		return INSTANCE.toCarsResponseDto(useCase.searchAll());
+		return INSTANCE.toCarsResponseDto(useCase.searchAllByUserId());
 	}
 	
 	@ResponseStatus(HttpStatus.OK)

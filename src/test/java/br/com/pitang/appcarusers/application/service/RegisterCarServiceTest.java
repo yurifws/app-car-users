@@ -1,6 +1,6 @@
 package br.com.pitang.appcarusers.application.service;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
@@ -16,10 +16,12 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import br.com.pitang.appcarusers.application.domain.cars.Car;
+import br.com.pitang.appcarusers.application.ports.in.SearchUserUseCase;
 import br.com.pitang.appcarusers.application.ports.in.ValidateCarUseCase;
 import br.com.pitang.appcarusers.application.ports.out.RegisterCarPort;
 import br.com.pitang.appcarusers.common.exception.LicensePlateAlreadyExistsException;
 import br.com.pitang.appcarusers.testdata.CarTestData;
+import br.com.pitang.appcarusers.testdata.UserTestData;
 
 @ExtendWith(SpringExtension.class)
 class RegisterCarServiceTest {
@@ -32,6 +34,9 @@ class RegisterCarServiceTest {
 
 	@Mock
 	private ValidateCarUseCase validateCarUseCase;
+	
+	@Mock
+	private SearchUserUseCase searchUserUseCase;
 
 	@Test
 	void testRegister() {
@@ -40,11 +45,13 @@ class RegisterCarServiceTest {
 		car.setId(null);
 		doNothing().when(validateCarUseCase).existsByLicensePlate(car.getLicensePlate());
 		when(port.register(car)).thenReturn(CarTestData.getCar());
+		when(searchUserUseCase.searchByLoggedUser()).thenReturn(UserTestData.getUser());
 		
 		Car response = service.register(car);
 		
 		verify(validateCarUseCase).existsByLicensePlate(car.getLicensePlate());
 		verify(port).register(car);
+		verify(searchUserUseCase).searchByLoggedUser();
 		assertNotNull(response);
 	}
 	

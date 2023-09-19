@@ -6,6 +6,6 @@ import br.com.pitang.appcarusers.application.domain.cars.Car;
 
 public interface SearchCarUseCase {
 
-	List<Car> searchAll();
+	List<Car> searchAllByUserId();
 	Car searchById(Long id);
 }
