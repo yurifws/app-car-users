@@ -16,6 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import br.com.pitang.appcarusers.adapters.auth.service.TokenService;
 import br.com.pitang.appcarusers.adapters.persistence.entity.UserEntity;
 import br.com.pitang.appcarusers.adapters.persistence.service.users.IUserService;
+import br.com.pitang.appcarusers.common.exception.UnauthorizedException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -26,16 +27,19 @@ public class FilterToken extends OncePerRequestFilter {
 	private final IUserService userService;
 
 	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
 		String authorizationHeader = request.getHeader("Authorization");
-		
+
 		if(ObjectUtils.isNotEmpty(authorizationHeader)) {
 			String token = authorizationHeader.replace("Bearer ", "");
 			String subject = tokenService.getSubject(token);
 
 			UserEntity userEntity = userService.findByLogin(subject);
+
+			if(ObjectUtils.isEmpty(userEntity)) {
+				throw new UnauthorizedException("Unauthorized");
+			}
 
 			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = 
 					new UsernamePasswordAuthenticationToken(userEntity, null, userEntity.getAuthorities());

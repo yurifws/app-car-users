@@ -17,12 +17,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import br.com.pitang.appcarusers.ContextBaseTests;
 import br.com.pitang.appcarusers.application.domain.cars.Car;
 import br.com.pitang.appcarusers.application.ports.in.SearchCarUseCase;
 import br.com.pitang.appcarusers.testdata.CarTestData;
 
 @WebMvcTest(SearchCarController.class)
-class SearchCarControllerTest {
+class SearchCarControllerTest extends ContextBaseTests {
 
 	@Autowired
 	private MockMvc mockMvc;

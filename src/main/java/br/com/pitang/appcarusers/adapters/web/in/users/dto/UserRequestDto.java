@@ -3,6 +3,9 @@ package br.com.pitang.appcarusers.adapters.web.in.users.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.pitang.appcarusers.adapters.web.in.cars.dto.CarRequestDto;
@@ -20,12 +23,25 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserRequestDto {
 	
+	@NotBlank
 	private String firstName;
+
+	@NotBlank
 	private String lastName;
+
+	@NotBlank
 	private String email;
+
+	@NotNull
 	private LocalDate birthday;
+	
+	@NotBlank
 	private String login;
+
+	@NotBlank
 	private String password;
+
+	@NotBlank
 	private String phone;
 	private List<CarRequestDto> cars;
 

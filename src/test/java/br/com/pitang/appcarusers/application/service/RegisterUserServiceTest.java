@@ -33,6 +33,9 @@ class RegisterUserServiceTest {
 
 	@Mock
 	private ValidateUserUseCase validateUserUseCase;
+	
+	@Mock
+	private RegisterCarService registerCarService;
 
 	@Test
 	void testRegister() {
@@ -42,12 +45,14 @@ class RegisterUserServiceTest {
 		doNothing().when(validateUserUseCase).existsByEmail(user.getEmail());
 		doNothing().when(validateUserUseCase).existsByLogin(user.getLogin());
 		when(port.register(user)).thenReturn(UserTestData.getUser());
+		when(registerCarService.register(user.getCars().get(0))).thenReturn(user.getCars().get(0));
 		
 		User response = service.register(user);
 		
 		verify(validateUserUseCase).existsByEmail(user.getEmail());
 		verify(validateUserUseCase).existsByLogin(user.getLogin());
 		verify(port).register(user);
+		verify(registerCarService).register(user.getCars().get(0));
 		assertNotNull(response);
 	}
 	

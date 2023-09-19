@@ -13,17 +13,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import br.com.pitang.appcarusers.ContextBaseTests;
 import br.com.pitang.appcarusers.application.ports.in.RemoveUserUseCase;
 
 @WebMvcTest(RemoveUserController.class)
-class RemoveUserControllerTest {
+class RemoveUserControllerTest extends ContextBaseTests {
 
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
 	private RemoveUserUseCase useCase;
-
+	
 	@Test
 	void testRemove() throws Exception {
 		Long id = 1234l;

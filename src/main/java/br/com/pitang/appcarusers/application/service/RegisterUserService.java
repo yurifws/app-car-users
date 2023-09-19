@@ -14,12 +14,18 @@ public class RegisterUserService implements RegisterUserUseCase {
 
 	private final RegisterUserPort port;
 	private final ValidateUserUseCase validateUserUseCase;
+	private final RegisterCarService registerCarService;
 	
 	@Override
 	public User register(User user) {
 		validateUserUseCase.existsByEmail(user.getEmail());
 		validateUserUseCase.existsByLogin(user.getLogin());
-		return port.register(user);
+		User savedUser = port.register(user);
+		user.getCars().forEach(car -> {
+			car = registerCarService.register(car);
+		});
+		
+		return savedUser;
 	}
 
 }

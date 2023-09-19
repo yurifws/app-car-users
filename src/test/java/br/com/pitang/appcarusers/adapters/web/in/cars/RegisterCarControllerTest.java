@@ -13,19 +13,20 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import br.com.pitang.appcarusers.ContextBaseTests;
 import br.com.pitang.appcarusers.application.domain.cars.Car;
 import br.com.pitang.appcarusers.application.ports.in.RegisterCarUseCase;
 import br.com.pitang.appcarusers.testdata.CarTestData;
 
 @WebMvcTest(RegisterCarController.class)
-class RegisterCarControllerTest {
+class RegisterCarControllerTest extends ContextBaseTests {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
 	private RegisterCarUseCase useCase;
-
+	
 	@Test
 	void testRegister() throws Exception {
 		Car car = CarTestData.getCar();

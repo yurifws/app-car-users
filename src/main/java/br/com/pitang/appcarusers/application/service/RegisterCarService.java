@@ -1,5 +1,6 @@
 package br.com.pitang.appcarusers.application.service;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Component;
 
 import br.com.pitang.appcarusers.application.domain.cars.Car;
@@ -20,7 +21,9 @@ public class RegisterCarService implements RegisterCarUseCase {
 	@Override
 	public Car register(Car car) {
 		validateCarUseCase.existsByLicensePlate(car.getLicensePlate());
-		car.setUser(searchUserUseCase.searchByLoggedUser());
+		if(ObjectUtils.isEmpty(car.getUser())) {
+			car.setUser(searchUserUseCase.searchByLoggedUser());
+		}
 		return port.register(car);
 	}
 	

@@ -13,19 +13,20 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import br.com.pitang.appcarusers.ContextBaseTests;
 import br.com.pitang.appcarusers.application.domain.users.User;
 import br.com.pitang.appcarusers.application.ports.in.RegisterUserUseCase;
 import br.com.pitang.appcarusers.testdata.UserTestData;
 
 @WebMvcTest(RegisterUserController.class)
-class RegisterUserControllerTest {
+class RegisterUserControllerTest extends ContextBaseTests {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
 	private RegisterUserUseCase useCase;
-
+	
 	@Test
 	void testRegister() throws Exception {
 		User user = UserTestData.getUser();
