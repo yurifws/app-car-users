@@ -13,18 +13,22 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import br.com.pitang.appcarusers.ContextBaseTests;
+import br.com.pitang.appcarusers.adapters.auth.service.TokenService;
+import br.com.pitang.appcarusers.adapters.persistence.service.users.IUserService;
 import br.com.pitang.appcarusers.application.domain.users.User;
 import br.com.pitang.appcarusers.application.ports.in.UpdateUserUseCase;
 import br.com.pitang.appcarusers.testdata.UserTestData;
 
 @WebMvcTest(UpdateUserController.class)
-class UpdateUserControllerTest {
+class UpdateUserControllerTest extends ContextBaseTests{
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
 	private UpdateUserUseCase useCase;
+	
 	@Test
 	void testUpdate() throws Exception {
 		User user = UserTestData.getUserUpdate();

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 
 import br.com.pitang.appcarusers.adapters.persistence.entity.UserEntity;
+import br.com.pitang.appcarusers.common.exception.UnauthorizedInvalidSessionException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -32,11 +34,16 @@ public class TokenService {
 
 
 	public String getSubject(String token) {
-		return JWT.require(Algorithm.HMAC256(SECRET))
-				.withIssuer("Cars")
-				.build()
-				.verify(token)
-				.getSubject();
+		try {
+			return JWT.require(Algorithm.HMAC256(SECRET))
+					.withIssuer("Cars")
+					.build()
+					.verify(token)
+					.getSubject();
+			
+		}catch (TokenExpiredException e) {
+			throw new UnauthorizedInvalidSessionException("Unauthorized - invalid session");
+		}
 	}
 
 }
