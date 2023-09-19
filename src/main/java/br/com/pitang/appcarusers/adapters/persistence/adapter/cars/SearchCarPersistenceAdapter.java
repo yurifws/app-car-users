@@ -18,15 +18,15 @@ import lombok.RequiredArgsConstructor;
 public class SearchCarPersistenceAdapter implements SearchCarPort {
 
 	private final ICarService service;
-	
+
 	@Override
-	public List<Car> searchAll() {
-		return INSTANCE.toCars(service.findAll());
+	public List<Car> searchAllByUserId(Long userId) {
+		return INSTANCE.toCars(service.findAllByUserId(userId));
 	}
 
 	@Override
-	public Optional<Car> searchById(Long id) {
-		Optional<CarEntity> optionalCarEntity = service.findById(id);
+	public Optional<Car> searchByIdAndUserId(Long id, Long userId) {
+		Optional<CarEntity> optionalCarEntity = service.findByIdAndUserId(id, userId);
 		if(optionalCarEntity.isPresent()) {
 			return Optional.of(INSTANCE.toCar(optionalCarEntity.get()));
 		}

@@ -32,5 +32,12 @@ public class SearchUserPersistenceAdapter implements SearchUserPort {
 		}
 		return Optional.empty();
 	}
+
+	@Override
+	public User searchByLogin(String login) {
+		UserEntity userEntity = service.findByLogin(login);
+		userEntity.setCars(null);
+		return INSTANCE.toUser(userEntity);
+	}
 	
 }

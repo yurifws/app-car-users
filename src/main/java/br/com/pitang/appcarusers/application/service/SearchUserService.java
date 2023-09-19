@@ -3,6 +3,8 @@ package br.com.pitang.appcarusers.application.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import br.com.pitang.appcarusers.application.domain.users.User;
@@ -28,6 +30,11 @@ public class SearchUserService implements SearchUserUseCase {
 			return optionalUser.get();
 		}
 		return null;
+	}
+	
+	@Override
+	public User searchByLoggedUser() {
+		return port.searchByLogin(((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
 	}
 
 }

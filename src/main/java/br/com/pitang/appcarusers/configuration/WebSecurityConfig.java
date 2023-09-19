@@ -1,5 +1,6 @@
 package br.com.pitang.appcarusers.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,10 +10,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+	
+	@Autowired
+	private FilterToken filterToken;
 
 	@Bean
 	protected PasswordEncoder passwordEncoder() {
@@ -27,6 +32,7 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
+		.addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests((authorize) -> authorize
 				.antMatchers("/api/signin").permitAll()
 				.antMatchers("/api/users").permitAll()

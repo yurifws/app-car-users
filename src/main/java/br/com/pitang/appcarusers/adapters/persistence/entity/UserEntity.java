@@ -1,12 +1,12 @@
 package br.com.pitang.appcarusers.adapters.persistence.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,8 +62,8 @@ public class UserEntity implements UserDetails {
 	@Column(nullable = false)
 	private String phone;
 
-	@OneToMany(mappedBy = "user")
-	private List<CarEntity> cars = new ArrayList<>(0);
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<CarEntity> cars;
 	
 	
 	@Override

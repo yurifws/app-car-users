@@ -2,7 +2,6 @@ package br.com.pitang.appcarusers.adapters.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +43,7 @@ public class CarEntity {
 	@Column(nullable = false)
 	private String color;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private UserEntity user;
 

@@ -29,26 +29,29 @@ class SearchCarPersistenceAdapterTest {
 	private ICarService service;
 
 	@Test
-	void testSearchAll() {
+	void testSearchAllByUserId() {
 		List<CarEntity> entities = new ArrayList<>();
-		entities.add(CarEntityTestData.getCarEntity());
-		when(service.findAll()).thenReturn(entities);
+		entities.add(CarEntityTestData.getCarEntityByUser());
+		Long userId = entities.get(0).getUser().getId();
+		when(service.findAllByUserId(userId)).thenReturn(entities);
 		
-		List<Car> response = adapter.searchAll();
+		List<Car> response = adapter.searchAllByUserId(userId);
 		
-		verify(service).findAll();
+		verify(service).findAllByUserId(userId);
 		assertNotNull(response);
 		
 	}
 	
 	@Test
-	void testSearchById() {
-		Long id = 1234l;
-		when(service.findById(id)).thenReturn(CarEntityTestData.getOptionalCarEntity());
+	void testSearchByIdAndUserId() {
+		Optional<CarEntity> optionalCarEntityByUser = CarEntityTestData.getOptionalCarEntityByUser();
+		Long id = optionalCarEntityByUser.get().getId();
+		Long userId = optionalCarEntityByUser.get().getUser().getId();
+		when(service.findByIdAndUserId(id, userId)).thenReturn(optionalCarEntityByUser);
 		
-		Optional<Car> response = adapter.searchById(id);
+		Optional<Car> response = adapter.searchByIdAndUserId(id, userId);
 		
-		verify(service).findById(id);
+		verify(service).findByIdAndUserId(id, userId);
 		assertNotNull(response.get());
 		
 	}

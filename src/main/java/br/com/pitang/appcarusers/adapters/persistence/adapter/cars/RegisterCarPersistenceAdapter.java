@@ -16,8 +16,8 @@ public class RegisterCarPersistenceAdapter implements RegisterCarPort {
 	private final ICarService service;
 
 	@Override
-	public Car register(Car user) {
-		return INSTANCE.toCar(service.save(INSTANCE.toCarEntity(user)));
+	public Car register(Car car) {
+		return INSTANCE.toCar(service.save(INSTANCE.toCarEntity(car)));
 	}
 
 }

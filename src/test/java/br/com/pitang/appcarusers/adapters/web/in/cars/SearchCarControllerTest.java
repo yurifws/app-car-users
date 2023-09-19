@@ -38,7 +38,7 @@ class SearchCarControllerTest {
 		car.setId(null);
 		cars.add(car);
 		
-		when(useCase.searchAll()).thenReturn(cars);
+		when(useCase.searchAllByUserId()).thenReturn(cars);
 		
 		mockMvc.perform(MockMvcRequestBuilders.get(BASE_PATH + CARS_ROUTE)
 				.contentType(MediaType.APPLICATION_JSON_VALUE))

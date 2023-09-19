@@ -16,14 +16,27 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class TokenService {
 
+	private static final String SECRET = "secret";
+
 	public String generateToken(UserEntity userEntity) throws UsernameNotFoundException {
 		return JWT.create()
-				.withIssuer("Car")
+				.withIssuer("Cars")
 				.withSubject(userEntity.getLogin())
 				.withClaim("id", userEntity.getId())
-				.withExpiresAt(LocalDateTime.now().plusMinutes(15).toInstant(ZoneOffset.of("-03:00")))
-				.sign(Algorithm.HMAC256("secret"));
-				
+				.withExpiresAt(LocalDateTime.now()
+						.plusSeconds(60)
+						.toInstant(ZoneOffset.of("-03:00")))
+				.sign(Algorithm.HMAC256(SECRET));
+
+	}
+
+
+	public String getSubject(String token) {
+		return JWT.require(Algorithm.HMAC256(SECRET))
+				.withIssuer("Cars")
+				.build()
+				.verify(token)
+				.getSubject();
 	}
 
 }

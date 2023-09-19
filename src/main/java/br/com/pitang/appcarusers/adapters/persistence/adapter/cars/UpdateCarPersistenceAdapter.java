@@ -19,11 +19,11 @@ public class UpdateCarPersistenceAdapter implements UpdateCarPort {
 	private final ICarService service;
 	
 	@Override
-	public Car update(Car user, Long id) {
+	public Car update(Car car, Long id) {
 		Optional<CarEntity> optionalCar = service.findById(id);
 		if(optionalCar.isPresent()) {
 			CarEntity userEntity = optionalCar.get();
-			INSTANCE.update(userEntity, user);
+			INSTANCE.update(userEntity, car);
 			return INSTANCE.toCar(service.save(userEntity));
 		}
 		return null;
