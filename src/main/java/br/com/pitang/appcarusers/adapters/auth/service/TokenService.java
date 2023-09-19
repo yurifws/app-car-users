@@ -3,6 +3,7 @@ package br.com.pitang.appcarusers.adapters.auth.service;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class TokenService {
 
-	private static final String SECRET = "secret";
+	@Value("${algorithm.secret}")
+	private String secret;
 
 	public String generateToken(UserEntity userEntity) throws UsernameNotFoundException {
 		return JWT.create()
@@ -28,14 +30,14 @@ public class TokenService {
 				.withExpiresAt(LocalDateTime.now()
 						.plusSeconds(60)
 						.toInstant(ZoneOffset.of("-03:00")))
-				.sign(Algorithm.HMAC256(SECRET));
+				.sign(Algorithm.HMAC256(secret));
 
 	}
 
 
 	public String getSubject(String token) {
 		try {
-			return JWT.require(Algorithm.HMAC256(SECRET))
+			return JWT.require(Algorithm.HMAC256(secret))
 					.withIssuer("Cars")
 					.build()
 					.verify(token)
