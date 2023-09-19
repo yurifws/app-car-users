@@ -13,5 +13,6 @@ public interface IUserService {
 	void removeById(Long id);
 	boolean existsByEmail(String email);
 	boolean existsByLogin(String login);
+	UserEntity findByLogin(String login);
 }
  

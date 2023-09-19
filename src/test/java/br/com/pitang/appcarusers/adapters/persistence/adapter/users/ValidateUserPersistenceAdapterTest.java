@@ -1,6 +1,6 @@
 package br.com.pitang.appcarusers.adapters.persistence.adapter.users;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

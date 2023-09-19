@@ -48,4 +48,9 @@ public class UserService implements IUserService {
 		return repository.existsByLogin(login);
 	}
 
+	@Override
+	public UserEntity findByLogin(String login) {
+		return repository.findByLogin(login);
+	}
+
 }

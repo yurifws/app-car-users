@@ -19,7 +19,7 @@ import lombok.Setter;
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserRequestDto {
-
+	
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -28,4 +28,5 @@ public class UserRequestDto {
 	private String password;
 	private String phone;
 	private List<CarRequestDto> cars;
+
 }
